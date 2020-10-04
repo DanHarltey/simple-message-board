@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MessageBoard.Contracts;
 using MessageBoard.Data;
+using MessageBoard.RestApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -27,6 +28,6 @@ namespace MessageBoard.Controllers
         public Task<IEnumerable<string>> Get() =>  _messageThreads.Get();
 
         [HttpPost]
-        public Task Post(Message message) => _messageThreads.AddMessage(message.Text);
+        public Task Post(SaveMessageRequest message) => _messageThreads.AddMessage(message.Text);
     }
 }

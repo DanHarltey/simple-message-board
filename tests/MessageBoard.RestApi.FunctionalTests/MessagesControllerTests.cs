@@ -35,7 +35,7 @@ namespace MessageBoard.RestApi.FunctionalTests
         {
             var client = _factory.CreateClient();
 
-            var helloMessage = JsonSerializer.Serialize(new Message
+            var helloMessage = JsonSerializer.Serialize(new SaveMessageRequest
             {
                 Text = "Hello world"
             });
@@ -52,7 +52,7 @@ namespace MessageBoard.RestApi.FunctionalTests
 
             var tooLongMessage = string.Concat(Enumerable.Range(0, MessagesSize.MaxLength + 1).Select(x => 'a'));
 
-            var message = JsonSerializer.Serialize(new Message
+            var message = JsonSerializer.Serialize(new SaveMessageRequest
             {
                 Text = tooLongMessage
             });
@@ -67,7 +67,7 @@ namespace MessageBoard.RestApi.FunctionalTests
         {
             var client = _factory.CreateClient();
 
-            var message = JsonSerializer.Serialize(new Message
+            var message = JsonSerializer.Serialize(new SaveMessageRequest
             {
                 Text = null
             });
@@ -82,7 +82,7 @@ namespace MessageBoard.RestApi.FunctionalTests
         {
             var client = _factory.CreateClient();
 
-            var message = JsonSerializer.Serialize(new Message
+            var message = JsonSerializer.Serialize(new SaveMessageRequest
             {
                 Text = string.Empty
             });
@@ -99,7 +99,7 @@ namespace MessageBoard.RestApi.FunctionalTests
 
             var messageText = "Hello world. My name is " + Guid.NewGuid();
 
-            var helloMessage = JsonSerializer.Serialize(new Message
+            var helloMessage = JsonSerializer.Serialize(new SaveMessageRequest
             {
                 Text = messageText
             });
